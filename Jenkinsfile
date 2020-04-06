@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh "yum --version"
+                sh "uname -a"
             }
         }
         stage('Deploy') {
