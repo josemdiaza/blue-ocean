@@ -32,7 +32,8 @@ spec:
       persistentVolumeClaim:
         claimName: root
 """
-}
+)
+{
     node(POD_LABEL) {
   stages {
     stage('Build') {
