@@ -6,7 +6,7 @@ labels:
   component: ci
 spec:
   # Use service account that can deploy to all namespaces
-  serviceAccountName: cd-jenkins
+  # serviceAccountName: cd-jenkins
   containers:
   - name: centos
     image: centos:latest
