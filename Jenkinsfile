@@ -28,10 +28,10 @@ spec:
 """
            ){
     node(POD_LABEL) {
-    stage('Build') {
+    stage('Check release') {
         container('centos') {
           sh """
-                        cat /etc/*release
+                        cat /etc/os-release
                                                 """
         }
       }
@@ -42,7 +42,8 @@ spec:
           """
         }
       }
-    stage('Push') {
+    stage('Build') {
+        git 'https://github.com/josemdiaza/blue-ocean.git'
         container('docker') {
           sh """
              docker build -t nginx:$BUILD_NUMBER .
