@@ -1,9 +1,4 @@
-pipeline {
-  agent {
-    kubernetes {
-      label 'jenkins-jenkins-slave'
-      defaultContainer 'jnlp'
-      yaml """
+podTemplate(yaml: """
 apiVersion: v1
 kind: Pod
 metadata:
@@ -38,7 +33,7 @@ spec:
         claimName: root
 """
 }
-   }
+    node(POD_LABEL) {
   stages {
     stage('Build') {
       steps {
@@ -53,7 +48,7 @@ spec:
       steps {
         container('centos') {
           sh """
-             mvn test
+             echo test
           """
         }
       }
@@ -69,3 +64,4 @@ spec:
     }
   }
 }
+
