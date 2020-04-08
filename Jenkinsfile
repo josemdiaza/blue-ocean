@@ -13,9 +13,6 @@ spec:
     command:
     - cat
     tty: true
-    volumeMounts:
-      - mountPath: "/root"
-        name: root
   - name: docker
     image: docker:latest
     command:
@@ -28,9 +25,6 @@ spec:
     - name: docker-sock
       hostPath:
         path: /var/run/docker.sock
-    - name: root
-      persistentVolumeClaim:
-        claimName: root
 """
            ){
     node(POD_LABEL) {
