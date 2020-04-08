@@ -29,30 +29,24 @@ spec:
            ){
     node(POD_LABEL) {
     stage('Build') {
-      steps {
         container('centos') {
           sh """
                         cat /etc/*release
                                                 """
         }
       }
-    }
     stage('Test') {
-      steps {
         container('centos') {
           sh """
              echo test
           """
         }
       }
-    }
     stage('Push') {
-      steps {
         container('docker') {
           sh """
              docker build -t nginx:$BUILD_NUMBER .
           """
-        }
       }
     }
   }
