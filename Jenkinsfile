@@ -34,7 +34,6 @@ spec:
 """
            ){
     node(POD_LABEL) {
-  stages {
     stage('Build') {
       steps {
         container('centos') {
@@ -63,5 +62,4 @@ spec:
       }
     }
   }
-}
 }
